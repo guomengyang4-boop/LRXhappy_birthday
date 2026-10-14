@@ -123,6 +123,7 @@ function updateHold(time) {
 function startHold(event) {
   if (isHolding || blowButton.disabled) return;
   event.preventDefault();
+  if (event.pointerId !== undefined) event.currentTarget.setPointerCapture?.(event.pointerId);
   isHolding = true;
   holdStartedAt = performance.now();
   blowButton.classList.add("is-holding");
